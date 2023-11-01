@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,24 @@
     <link rel="stylesheet" href="../assets/css/ssp.css"> <!-- importera sidspecifik CSS vid behov -->
     <title>Sten, sax & påse</title>
 </head>
-<body>
-    
 
+<body>
+    <div id="gamediv">
+        <div id="text">
+            <h1 class="GameObject" id="player">Player</h1>
+            <h1 class="GameObject" id="opponent">Opponent</h1>
+            <h1 class="GameObject" id="result">Result</h1>
+        </div>
+        <div id="buttons">
+            <button class="choiceBtn">Rock</button>
+            <button class="choiceBtn">Paper</button>
+            <button class="choiceBtn">Scissors</button>
+        </div>
+    </div>
 
     <script src="../assets/js/main.js"></script> <!-- importera main.js (OBS ../ )-->
     <script src="../assets/js/ssp.js"></script> <!-- importera sidspecifik JS -->
+
 </body>
+
 </html>
