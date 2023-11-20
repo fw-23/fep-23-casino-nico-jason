@@ -10,17 +10,34 @@
 
 <body>
     
-        <button class = "MenuButton" onclick="openNav()">⨞</button>
+    <button id = "MenuButton" onclick="openNav()">⨞</button>
     
-    <div id="menu">
-
+    <nav id="menu">
         <a href="#" onclick="closeNav()">⨞</a>
         <!-- Add your navigation links here -->
         <a href="#">Profile</a>
         <a href="#">Games</a>
         <a href="#">Big Winners</a>
+    </nav>
 
-    </div>
+
+
+
+    <div id="welcome">
+        <h1 style="text-align:center;">Welcome to the Casino!</h1><br/>
+    
+
+        <section id="login">
+            <p>Recieve your free welcome bonus!</p>
+            <p>sign in here!</p>
+            <input type="text" name="username">
+            <p>Ammount of credits you want</p>
+            <input type="number" name="credits">
+            <p>Set Time Limit</p>
+            <input type="time">
+            <button id="loginbutton">Log in</button>
+        </section>
+</div>
 
     <script src="./assets/js/main.js"></script>
 

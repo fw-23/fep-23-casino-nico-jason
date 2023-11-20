@@ -1,8 +1,12 @@
 /* Site-wide styling here */
 body {
-    background-color: #c9cef0; /* Bara för att testa, ÄNDRA eller ta bort! */
+    background-color: #676767; /* Bara för att testa, ÄNDRA eller ta bort! */
+    color: #111;
+    
 }
 
+
+/* All Nav things for the side menu*/
 #menu {
     height: 100%;
     width: 0;
@@ -28,14 +32,38 @@ body {
     color: white;
   }
   
-  button {
-    position: fixed;
-    left: 24px;
+  #MenuButton {
+    position:relative;
+    left: 18px;
     background-color:#818181;
+    color: white;
     font-size: 25px;
     padding: 4px;
   }
-  button:hover {
-    background-color: white;
+  #MenuButton:hover {
+    background-color: black;
     
+  }
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+  #login {
+    font-size:24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    max-width: fit-content;
+    padding: 10px;
+  }
+
+  #login p {
+    margin: 0%;
   }
