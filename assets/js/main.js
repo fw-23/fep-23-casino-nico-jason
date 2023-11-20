@@ -10,22 +10,11 @@ function closeNav() {
     document.getElementById("menu").style.width = "0";
 }
 //--------------------------
-
-
 let username;
 let credits;
 let age;
 let time;
 
-function setCookie(name, value, days, time) {
-    let expires = "";
-    if (minutes) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
 
 
 
@@ -38,14 +27,26 @@ function logIn() {
     age = document.getElementById("age").value
     time = document.getElementById("time").value
     
-    timer(time)
+    //timer(time)
 
     let aged = +age
     if(aged < 18){
-       console.log("Du måste vara minst 18 år för att kunna registrera dig.")
-    }else if(aged > 18){
-        console.log("du e gamal")
+       alert("Du måste vara minst 18 år för att kunna registrera dig.")
     }
+    else{ localStorage.setItem("age", age)}
+
+    if(username == ""){
+        alert("username is needed")
+    }
+    else { localStorage.setItem("username", username)}
+    
+    if(credits == "" || credits <= 0){
+        alert("You need to have at least one credit to play!")}
+        else {localStorage.setItem("credits", credits)}
+
+        console.log(`Username: ${username}, Credits: ${credits}, Age: ${age}`);
+        console.log(localStorage)
+    
 
 
 
@@ -54,10 +55,10 @@ function logIn() {
 
 }
 
-function timer(playtime){
+/* function timer(playtime){
     let TimeInt = +playtime
     let playTimeStop =
     
     console.log(playTimeStop)
     
-}
+}*/
