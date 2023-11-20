@@ -23,20 +23,21 @@
 
 
 
-<div id="welcome">
+    <div id="welcome">
         <h1 style="text-align:center;">Welcome to the Casino!</h1><br/>
     
 
         <section id="login">
             <p>Recieve your free welcome bonus!</p>
             <p>sign in here!</p>
-            <input type="text" name="username">
+            <p>username</p>
+            <input type="text" name="username" id="username">
             <p>Ammount of credits you want</p>
-            <input type="number" name="credits">
-            <p>date of birth</p>
-            <input type="date">
+            <input type="number" name="credits" id="credits">
+            <p>Your age</p>
+            <input type="number" name="age" id="age">
             <p>Set Time Limit</p>
-            <select>
+            <select id="time">
                 <option value="5">5 Minutes</option>
                 <option value="10">10 minutes</option>
                 <option value="15">15 minutes</option>
@@ -44,9 +45,11 @@
                 <option value="60">1 hour</option>
                 <option value="120">2 hours</option>
             </select>
-            <button id="loginbutton">Log in</button>
+            <button id="loginbutton" onclick="logIn()">Log in</button>
         </section>
-</div>
+    </div>
+
+
 
     <script src="./assets/js/main.js"></script>
 
