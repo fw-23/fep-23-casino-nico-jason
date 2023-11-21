@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/main.css"> 
+    <link rel="stylesheet" href="./assets/css/main.css">
     <title>Casino</title>
 </head>
 
 <body>
-    
 
- <button id = "MenuButton" onclick="openNav()">⨞</button>
+
+    <button id="MenuButton" onclick="openNav()">⨞</button>
     <nav id="menu">
         <a href="#" onclick="closeNav()">⨞</a>
         <!-- Add your navigation links here -->
@@ -20,10 +21,10 @@
         <a href="#">Big Winners</a>
     </nav>
 
-<div id="dateAndTime">
-    <h2>Live Date & Time</h2> <span id="dateTime"></span></h2>
-    <span id="UserDisplay"></span>
-    <span id="TimerDisplay"></span>
+    <div id="dateAndTime">
+        <h2>Live Date & Time</h2> <span id="dateTime"></span></h2>
+        <span id="UserDisplay"></span>
+        <span id="TimerDisplay"></span>
     </div>
 
 
@@ -31,35 +32,43 @@
 
 
     <div id="welcome">
-        <h1>Welcome to the Casino!</h1><br/>
+        <h1>Welcome to the Casino!</h1><br />
         <h1>Ready to loose some money kiD?!?!?<h1>
-    
 
-        <section id="login">
-            <p>Recieve your free welcome bonus!</p>
-            <p>sign in here!</p>
-            <p>username</p>
-            <input type="text" name="username" id="username">
-            <p>Ammount of credits you want</p>
-            <input type="number" name="credits" id="credits">
-            <p>Your age</p>
-            <input type="number" name="age" id="age">
-            <p>Set Time Limit</p>
-            <select id="time">
-                <option value="5">5 Minutes</option>
-                <option value="10">10 minutes</option>
-                <option value="15">15 minutes</option>
-                <option value="30">30 minutes</option>
-                <option value="60">1 hour</option>
-                <option value="120">2 hours</option>
-            </select>
-            <button id="loginbutton" onclick="logIn()">Log in</button>
-        </section>
+
+                <section id="login">
+                    <p>Recieve your free welcome bonus!</p>
+                    <p>sign in here!</p>
+                    <p>username</p>
+                    <input type="text" name="username" id="username">
+                    <p>Ammount of credits you want</p>
+                    <input type="number" name="credits" id="credits">
+                    <p>Your age</p>
+                    <input type="number" name="age" id="age">
+                    <p>Set Time Limit</p>
+                    <select id="time">
+                        <option value="5">5 Minutes</option>
+                        <option value="10">10 minutes</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="120">2 hours</option>
+                    </select>
+                    <button id="loginbutton" onclick="logIn()">Log in</button>
+                </section>
     </div>
 
-
+    <div id="themeChanger">
+        <select name="ColorTheme" id="ColorTheme">
+            <option value="light">Light-mode</option>
+            <option value="dark">Dark-mode</option>
+            <option value="gambler">...</option>
+        </select>
+        <button onclick="saveTheme()">save</button>
+    </div>
 
     <script src="./assets/js/main.js"></script>
 
 </body>
+
 </html>
