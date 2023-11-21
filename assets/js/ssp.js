@@ -29,7 +29,7 @@ choiceBtns.forEach(button => button.addEventListener("click" , () => {
 
 function computerTurn (){
 
-    const randNum = Math.floor(Math.random() * 3);
+    const randNum = Math.floor(Math.random() * 4);
 
     switch(randNum){
         case 0:
@@ -41,6 +41,14 @@ function computerTurn (){
         case 2:
             computer = "Scissors"
         break;
+        case 3:
+            if(player == "Rock"){
+                computer = "Paper"
+            }if(player = "Paper"){
+                computer = "Scissors"
+            }if(player = "Scissors"){
+                computer = "Rock"
+            }
 
     }
 
