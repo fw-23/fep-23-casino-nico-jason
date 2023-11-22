@@ -19,6 +19,7 @@
         <a href="#">Profile</a>
         <a href="/pages/middleman/">Games</a>
         <a href="#">Big Winners</a>
+        <a href="#">About</a>
     </nav>
 
     <div id="dateAndTime">
@@ -39,8 +40,11 @@
                 <section id="login">
                     <p>Recieve your free welcome bonus!</p>
                     <p>sign in here!</p>
-                    <p>username</p>
-                    <input type="text" name="username" id="username">
+                    <p>name and surname</p>
+                    <div id="nameSurname">
+                    <input type="text" name="name" id="namn">
+                    <input type="text" name="surname" id="surname">
+                    </div>
                     <p>Ammount of credits you want</p>
                     <input type="number" name="credits" id="credits">
                     <p>Your age</p>
@@ -60,11 +64,13 @@
 
     <div id="themeChanger">
         <select name="ColorTheme" id="ColorTheme">
-            <option value="light">Light-mode</option>
             <option value="dark">Dark-mode</option>
-            <option value="gambler">...</option>
+            <option value="light">Light-mode</option>
+            <option value="gambler">gambler-mode</option>
         </select>
+        
         <button onclick="saveTheme()">save</button>
+        
     </div>
 
     <script src="./assets/js/main.js"></script>

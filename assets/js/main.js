@@ -10,53 +10,64 @@ function closeNav() {
     document.getElementById("menu").style.width = "0";
 }
 //--------------------------
+
+let förnamn;
+let surname;
 let username;
 let credits;
 let age;
 let aged = +age
 let playtime;
 let playTimeStop;
+
+//Login!
+function logIn() {
+    getvalues();
+    timer()
+    localStorageFunction(aged);
+    StealYourInfo()
+    InfoDisplay();
+    if (aged >= 18) {
+        hideLogin()
+    }
+}
+
+ColorTheme()
+
 //date and time
 function InfoDisplay() {
+    //ny "Date" object
     let date = new Date();
+    //Får ut specifik data ur Date
     let d = date.getUTCDate();
     let mont = date.getUTCMonth();
     let h = date.getHours();
     let m = date.getMinutes();
     let s = date.getSeconds();
 
-
+    //current time omformat och usrename, visar det i html
     let currentTime = `${d}.${mont + 1} Time:${h}:${m}:${s}`;
     document.getElementById("dateTime").innerText = currentTime
     document.getElementById("dateTime").textContent = currentTime;
     document.getElementById("UserDisplay").innerText = username;
 
+    //refreshar varje sekund
     setTimeout(InfoDisplay, 1000);
 }
 
-InfoDisplay();
+
 
 //-----------------------------
-ColorTheme()
-function logIn() {
-    getvalues();
-    timer()
-    localStorageFunction(aged);
-    StealYourInfo()
-    if (aged >= 18) {
-        hideLogin()
-    }
-    
 
-}
 
+//Local storage för userdata
 function localStorageFunction(aged) {
     if (aged < 18) {
         alert("Du måste vara minst 18 år för att kunna registrera dig.");
     }
     else { localStorage.setItem("age", age); }
 
-    if (username == "") {
+    if (namn == "" || surname == "") {
         alert("username is needed");
     }
     else { localStorage.setItem("username", username); }
@@ -70,13 +81,23 @@ function localStorageFunction(aged) {
     console.log(localStorage);
 }
 
+//getvalues för all input data + username generator
 function getvalues() {
-    username = document.getElementById("username").value;
+    namn = document.getElementById("namn").value;
+    surname = document.getElementById("surname").value;
     credits = document.getElementById("credits").value;
     age = document.getElementById("age").value;
     playtime = document.getElementById("time").value;
+    username = createUsername(namn, surname);
+}
+// create username function
+function createUsername(first, last){
+    fullname = first[0] + last;
+    username = fullname.charAt(0).toUpperCase() + fullname.charAt(1).toUpperCase() + fullname.slice(2);
+    return username;
 }
 
+//timer function för playtimestop
 function timer() {
     let date = new Date();
     let h = date.getHours();
@@ -97,14 +118,9 @@ function timer() {
         }
 
     let playTimeStop = `${h}:${m}:${s}`
-
-    console.log(playTimeStop)
-    document.getElementById("TimerDisplay").innerText = "casino closes at" + playTimeStop;
-
-
-
+    document.getElementById("TimerDisplay").innerText = "casino closes: " + playTimeStop;
 }
-
+//Info user information display 
 function StealYourInfo() {
     console.log(navigator.platform) //platform
     console.log(navigator.userAgent) //browser 
@@ -154,10 +170,10 @@ function hideLogin() {
 function saveTheme(){
     const theme = document.getElementById("ColorTheme")
     localStorage.setItem("colortheme", theme.value)
+    location.reload();
 }
 function ColorTheme(){
-    
-    
+
     let colorvalue
     let textvalue
 
@@ -174,6 +190,7 @@ function ColorTheme(){
         colorvalue = colorGambler()
         textvalue = colorGambler()
     }
+   
 
     console.log(colorvalue + textvalue)
 
