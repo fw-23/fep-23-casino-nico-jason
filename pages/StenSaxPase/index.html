@@ -17,11 +17,18 @@
             <h1 class="GameObject" id="result">Result</h1>
         </div>
         <div id="buttons">
-            <button class="choiceBtn">Rock</button>
-            <button class="choiceBtn">Paper</button>
-            <button class="choiceBtn">Scissors</button>
+            <button class="choiceBtn" onclick="bet()">Rock</button>
+            <button class="choiceBtn" onclick="bet()">Paper</button>
+            <button class="choiceBtn" onclick="bet()">Scissors</button>
         </div>
     </div>
+
+    <div id="creditAmount"></div>
+
+    <div id="bet">
+        <input type="number" id="betAmount" placeholder="amount">
+    </div>
+
     <script src="../../assets/js/ssp.js"></script> <!-- importera sidspecifik JS -->
 
 </body>

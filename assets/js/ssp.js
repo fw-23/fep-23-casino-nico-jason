@@ -59,24 +59,53 @@ function checkWinner(){
     if(player == computer){
         return("Draw")
     }else if(player == "Rock" && computer == "Scissors"){
-        return("you win")
+        return("win")
     }
     else if(player == "Paper" && computer == "Rock"){
-        return("you win")
+        return("win")
     }
     else if(player == "Scissors" && computer == "Paper"){
-        return("you win")
+        return("win")
     }
 
     else if(computer == "Rock" && player == "Scissors"){
-        return("you lose")
+        return("lost")
     }
     else if(computer == "Paper" && player == "Rock"){
-        return("you lose")
+        return("lost")
     }
     else if(computer == "Scissors" && player == "Paper"){
         
-        return("you lose")
+        return("lost")
     }
 
+}
+
+let credits = localStorage.getItem("credits")
+let creditsInt = + credits
+function bet(){    
+    let bet = document.getElementById("betAmount")
+    let winner = checkWinner()
+    console.log(winner)
+    UpdateCredits()
+    
+
+    if(bet.value >  creditsInt){
+        alert("insufficent credits")
+    }else if(bet.value < creditsInt){
+        if(winner == "win"){
+            creditsInt += +bet.value 
+            localStorage.setItem("credits", creditsInt)
+        }if(winner == "lost"){
+            creditsInt -= +bet.value 
+            localStorage.setItem("credits", creditsInt)
+        }else{
+            console.log("no change")
+        }
+    }
+
+}
+UpdateCredits()
+function UpdateCredits(){
+    document.getElementById("creditAmount").innerHTML =  `${creditsInt}`
 }
