@@ -184,7 +184,7 @@ function ColorTheme(){
     }if(localStorage.getItem("colortheme") == "dark"){
         console.log("dark")
         colorvalue = "#676767"
-        textvalue = "#FFFFFF"
+        textvalue = "#111"
     }if(localStorage.getItem("colortheme") == "gambler"){
         console.log("huuuh")
         colorvalue = colorGambler()
