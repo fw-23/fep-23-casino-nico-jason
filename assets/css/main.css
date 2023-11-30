@@ -3,8 +3,6 @@ body {
     background-color: #676767; /* Bara för att testa, ÄNDRA eller ta bort! */
     color: #111;
     padding: 0%;
-    
-    
 }
 
 
@@ -21,16 +19,17 @@ body {
     padding-top: 0px;
   }
   
-  #menu a {
+  #menu span {
     padding: 14px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
+    cursor: pointer;
   }
   
-  #menu a:hover {
+  #menu span:hover {
     color: white;
   }
   
@@ -44,6 +43,19 @@ body {
   }
   #MenuButton:hover {
     background-color: black;
+    
+  }
+  #MenuButtonClose {
+    position:relative;
+    left: 28px;
+    top: 10px;
+    background-color:black;
+    color: white;
+    font-size: 25px;
+    padding: 4px;
+  }
+  #MenuButtonClose:hover {
+    background-color: #818181;
     
   }
 
@@ -92,4 +104,39 @@ body {
 
   #login p {
     margin: 0%;
+  }
+  /* Different Containers */
+  .rowCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .columnCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* ImgGallerySidan*/
+
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 50rem;
+    margin-inline: auto;
+  }
+
+  .image-gallery > img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: scale 350ms ease, opacity 350ms linear;
+  }
+
+  .image-gallery >img:not(:hover) {
+    scale: .8;
+    opacity: .7;
   }

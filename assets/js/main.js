@@ -20,6 +20,18 @@ let aged = +age
 let playtime;
 let playTimeStop;
 
+//Single page app things
+async function loadContent(page) {
+    const req = await fetch(`./${page}`);
+    const content = await req.text();
+    document.querySelector(`article`).innerHTML = content;
+}
+document.querySelector(`nav`).addEventListener(`click`, (evt) => {
+    if(evt.target.localName != `span` ) return;
+    //console.log("JA");
+    console.log(evt.target.dataset.page);
+    loadContent(evt.target.dataset.page);
+})
 //Login!
 function logIn() {
     getvalues();
@@ -30,16 +42,6 @@ function logIn() {
     if (age >= 18) {
         hideLogin();
     }
-}
-window.onload = KeepLoggedIn()
-
-//Automatiskt inloggning via localstorage
-function KeepLoggedIn() {
-    username = localStorage.getItem(username);
-    credits = localStorage.getItem(credits);
-    age = localstorage.getItem(age);
-    InfoDisplay();
-
 }
 
 ColorTheme()
@@ -174,7 +176,7 @@ function timesplayed() {
 
 function hideLogin() {
 
-    const loginSection = document.getElementById("welcome")
+    const loginSection = document.getElementById("login")
     loginSection.style.display = "none"
 }
 function displayLogin() {

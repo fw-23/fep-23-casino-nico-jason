@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
     <title>Casino - Home</title>
 </head>
 <body>
@@ -13,13 +13,12 @@
     <!-- Navigation -->
     <button id="MenuButton" onclick="openNav()">⨞</button>
     <nav id="menu">
-        <a href="#" onclick="closeNav()">⨞</a>
+        <button id="MenuButtonClose" onclick="closeNav()">⨞</button>
         
-        <a href="/index.html">Home</a>
-        <a href="/pages/Profile/">Profile</a>
-        <a href="/pages/middleman/">Games</a>
-        <a href="#">Big Winners</a>
-        <a href="#">About</a>
+        <span data-page="Profile">Profile</span>
+        <span data-page="Games">Games</span>
+        <span data-page="Gallery">Big Winners</span>
+        <span data-page="#">About</span>
     </nav>
 
 <!-- Date and time box -->
@@ -62,8 +61,9 @@
                     <button id="loginbutton" onclick="logIn()">Log in</button>
                 </section>
     </div>
+    <article></article>
 
-    <script src="./assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 
 </body>
 
