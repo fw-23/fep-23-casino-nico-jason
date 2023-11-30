@@ -27,9 +27,19 @@ function logIn() {
     localStorageFunction(aged);
     StealYourInfo()
     InfoDisplay();
-    if (aged >= 18) {
-        hideLogin()
+    if (age >= 18) {
+        hideLogin();
     }
+}
+window.onload = KeepLoggedIn()
+
+//Automatiskt inloggning via localstorage
+function KeepLoggedIn() {
+    username = localStorage.getItem(username);
+    credits = localStorage.getItem(credits);
+    age = localstorage.getItem(age);
+    InfoDisplay();
+
 }
 
 ColorTheme()
@@ -49,7 +59,7 @@ function InfoDisplay() {
     let currentTime = `${d}.${mont + 1} Time:${h}:${m}:${s}`;
     document.getElementById("dateTime").innerText = currentTime
     document.getElementById("dateTime").textContent = currentTime;
-    document.getElementById("UserDisplay").innerText = username;
+    document.getElementById("UserDisplay").innerText = localStorage.getItem(username);
 
     //refreshar varje sekund
     setTimeout(InfoDisplay, 1000);
@@ -119,6 +129,7 @@ function timer() {
 
     let playTimeStop = `${h}:${m}:${s}`
     document.getElementById("TimerDisplay").innerText = "casino closes: " + playTimeStop;
+    localStorage.setItem(`playTimeStop`, playTimeStop)
 }
 //Info user information display 
 function StealYourInfo() {
@@ -165,7 +176,10 @@ function hideLogin() {
 
     const loginSection = document.getElementById("welcome")
     loginSection.style.display = "none"
-
+}
+function displayLogin() {
+    const loginSection = document.getElementById("welcome")
+    loginSection.style.display = "flex"
 }
 function saveTheme(){
     const theme = document.getElementById("ColorTheme")

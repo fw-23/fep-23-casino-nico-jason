@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <title>Casino - Profile</title>
+</head>
+<body>
+    
+        <!-- Navigation -->
+        <button id="MenuButton" onclick="openNav()">⨞</button>
+        <nav id="menu">
+            <a href="#" onclick="closeNav()">⨞</a>
+            
+            <a href="/index.html">Home</a>
+            <a href="/pages/Profile/">Profile</a>
+            <a href="/pages/middleman/">Games</a>
+            <a href="#">Big Winners</a>
+            <a href="#">About</a>
+        </nav>
+
+        <section id="profile">
+            <h1>Profile</h1>
+            <p id="usernameProfile"></p>
+            <p id="creditBalanceProfile"></p>
+        <div id="themeChanger">
+            <select name="ColorTheme" id="ColorTheme">
+                <option value="dark">Dark-mode</option>
+                <option value="light">Light-mode</option>
+                <option value="gambler">gambler-mode</option>
+            </select>
+            
+            <button onclick="saveTheme()">save</button>
+            
+        </div>
+        </section>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

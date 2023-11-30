@@ -6,22 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/main.css">
-    <title>Casino</title>
+    <title>Casino - Home</title>
 </head>
-
 <body>
 
-
+    <!-- Navigation -->
     <button id="MenuButton" onclick="openNav()">⨞</button>
     <nav id="menu">
         <a href="#" onclick="closeNav()">⨞</a>
-        <!-- Add your navigation links here -->
-        <a href="#">Profile</a>
+        
+        <a href="/index.html">Home</a>
+        <a href="/pages/Profile/">Profile</a>
         <a href="/pages/middleman/">Games</a>
         <a href="#">Big Winners</a>
         <a href="#">About</a>
     </nav>
 
+<!-- Date and time box -->
     <div id="dateAndTime">
         <h2>Live Date & Time</h2> <span id="dateTime"></span></h2>
         <span id="UserDisplay"></span>
@@ -31,7 +32,7 @@
 
 
 
-
+<!--Login box-->
     <div id="welcome">
         <h1>Welcome to the Casino!</h1><br />
         <h1>Ready to loose some money kiD?!?!?<h1>
@@ -60,17 +61,6 @@
                     </select>
                     <button id="loginbutton" onclick="logIn()">Log in</button>
                 </section>
-    </div>
-
-    <div id="themeChanger">
-        <select name="ColorTheme" id="ColorTheme">
-            <option value="dark">Dark-mode</option>
-            <option value="light">Light-mode</option>
-            <option value="gambler">gambler-mode</option>
-        </select>
-        
-        <button onclick="saveTheme()">save</button>
-        
     </div>
 
     <script src="./assets/js/main.js"></script>
