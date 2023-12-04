@@ -28,7 +28,7 @@ let playTimeStop;
     const req = await fetch(`./${page}`);
     const content = await req.text();
     document.querySelector(`article`).innerHTML = content;
-    ActivateImg();
+    ActivateEvent();
 }
  document.getElementById(`menu`).addEventListener(`click`, (evt) => {
     if(evt.target.localName != `span` ) return;
@@ -186,9 +186,9 @@ function displayLogin() {
     loginSection.style.display = "flex"
 }
 function saveTheme(){
-    const theme = document.getElementById("ColorTheme")
-    localStorage.setItem("colortheme", theme.value)
-    location.reload();
+    const theme = document.getElementById("ColorTheme");
+    localStorage.setItem("colortheme", theme.value);
+    ColorTheme();
 }
 function ColorTheme(){
 
@@ -207,6 +207,14 @@ function ColorTheme(){
         console.log("huuuh")
         colorvalue = colorGambler()
         textvalue = colorGambler()
+    }if(localStorage.getItem("colortheme") == "Cool"){
+        console.log("Cool")
+        colorvalue = "rgb(15,4,150) linear-gradient(90deg, rgba(15,4,150,1) 0%, rgba(244,59,59,1) 65%, rgba(16,122,65,1) 100%)"
+        textvalue = "#111"
+    }if(localStorage.getItem("colortheme") == "BobMarley"){
+        console.log("BobMarley")
+        colorvalue = "rgb(244,0,0) linear-gradient(90deg, rgba(244,0,0,1) 25%, rgba(247,255,0,1) 52%, rgba(2,150,0,1) 90%)"
+        textvalue = "#111"
     }
    
 
@@ -218,7 +226,7 @@ function ColorTheme(){
 
 
 function setColor(colorvalue, textvalue) {
-    document.body.style.backgroundColor = colorvalue;
+    document.body.style.background = colorvalue;
     document.body.style.color = textvalue;
 }
 
@@ -238,7 +246,7 @@ function openLightbox(elem) {
         document.querySelector(`#lightbox`).style.display = "none";
     });
 }
-function ActivateImg() {
+function ActivateEvent() {
   document.querySelectorAll('#ImageGallery img').forEach((element) => {
     element.addEventListener('click', () => openLightbox(element));
 }); } 

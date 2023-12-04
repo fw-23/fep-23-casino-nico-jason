@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
     <title>Casino - Profile</title>
 </head>
 <body>
 
-        <section id="profile">
-            <h1>Profile</h1>
-            <p id="usernameProfile"></p>
-            <p id="creditBalanceProfile"></p>
+    <section id="profile">
+        <h1>Profile</h1>
+        <p id="usernameProfile"></p>
+        <p id="creditBalanceProfile"></p>
         <div id="themeChanger">
-            <select name="ColorTheme" id="ColorTheme">
-                <option value="dark">Dark-mode</option>
-                <option value="light">Light-mode</option>
-                <option value="gambler">gambler-mode</option>
-            </select>
-            
-            <button onclick="saveTheme()">save</button>
-            
+            <p>Change Color Theme</p>
+            <div class="rowCont">
+                <select name="ColorTheme" id="ColorTheme">
+                    <option value="dark">Dark-mode</option>
+                    <option value="light">Light-mode</option>
+                    <option value="gambler">gambler-mode</option>
+                    <option value="Cool">Cool</option>
+                    <option value="BobMarley">Dank</option>
+                </select>
+                <button onclick="saveTheme()">save</button>
+            </div>
         </div>
-        </section>
+    </section>
 
     <script src="/assets/js/main.js"></script>
 </body>
