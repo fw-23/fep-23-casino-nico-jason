@@ -4,7 +4,7 @@ body {
     color: #111;
     padding: 0%;
 }
-
+/* Casino closed div som täcker allt */
 #CasinoClosed {
   display: none; /* Change this for now when test */
   justify-content: center;
@@ -20,7 +20,7 @@ body {
   font-size: x-large;
   font-family: sans-serif;
 }
-
+/*--------------------------------------------------*/
 /* All Nav things for the side menu*/
 #menu {
     height: 100%;
@@ -72,7 +72,7 @@ body {
     background-color: #818181;
     
   }
-
+/*--------------------------------------------------*/
 /* Date och time */
 #dateAndTime {
   display: flex;
@@ -95,7 +95,7 @@ body {
 #dateAndTime span {
   font-size: x-large;
 }
-
+/*---------------------------------------*/
 /* Welcome sidan styling samt knappar */
 #welcome {
   display: flex;
@@ -214,4 +214,15 @@ body {
 
   #themeChanger {
    padding: 0%; 
+  }
+  /*--------------------------------------------------*/
+  /* Games sidan styling */
+  .rowCont a {
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+    border: #000000 solid;
+    margin: 5px;
+    background-color: yellow;
   }
