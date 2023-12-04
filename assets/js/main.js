@@ -46,7 +46,7 @@ function logIn() {
     }
 }
 
-ColorTheme()
+ColorTheme();
 
 //date and time
 function InfoDisplay() {
@@ -61,9 +61,9 @@ function InfoDisplay() {
 
     //current time omformat och usrename, visar det i html
     let currentTime = `${d}.${mont + 1} Time:${h}:${m}:${s}`;
-    document.getElementById("dateTime").innerText = currentTime
+    document.getElementById("dateTime").innerText = currentTime;
     document.getElementById("dateTime").textContent = currentTime;
-    document.getElementById("UserDisplay").innerText = localStorage.getItem(username);
+    document.getElementById("UserDisplay").innerText = localStorage.getItem("username");
 
     //refreshar varje sekund
     setTimeout(InfoDisplay, 1000);
@@ -178,7 +178,7 @@ function timesplayed() {
 
 function hideLogin() {
 
-    const loginSection = document.getElementById("login")
+    const loginSection = document.getElementById("welcome")
     loginSection.style.display = "none"
 }
 function displayLogin() {
