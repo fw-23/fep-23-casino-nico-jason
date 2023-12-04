@@ -105,7 +105,7 @@ function bet(){
         alert("insufficent credits")
     }if(bet < 0 ){
         alert("cant bet negativ")
-    }if(bet = "amount"){
+    }if(bet == "amount"){
         alert("enter bet amount")
     }else if(bet < getCredits()){
         if(winner == "win"){
