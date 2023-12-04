@@ -20,18 +20,20 @@ let aged = +age
 let playtime;
 let playTimeStop;
 
+
+
+
 //Single page app things
-async function loadContent(page) {
+  async function loadContent(page) {
     const req = await fetch(`./${page}`);
     const content = await req.text();
     document.querySelector(`article`).innerHTML = content;
+    ActivateImg();
 }
-document.querySelector(`nav`).addEventListener(`click`, (evt) => {
+ document.getElementById(`menu`).addEventListener(`click`, (evt) => {
     if(evt.target.localName != `span` ) return;
-    //console.log("JA");
-    console.log(evt.target.dataset.page);
     loadContent(evt.target.dataset.page);
-})
+}) 
 //Login!
 function logIn() {
     getvalues();
@@ -223,5 +225,20 @@ function setColor(colorvalue, textvalue) {
 colorGambler()
 function colorGambler(){
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    return "#"+randomColor
+    return "#"+randomColor;
 }
+
+//--------Img gallery----------
+function openLightbox(elem) {
+    const bigImg = elem.dataset.fullsize;
+    console.log(bigImg);
+    document.querySelector('#lightbox img').src = bigImg;
+    document.querySelector(`#lightbox`).style.display = "flex";
+    document.querySelector(`#lightbox`).addEventListener(`click`, () => {
+        document.querySelector(`#lightbox`).style.display = "none";
+    });
+}
+function ActivateImg() {
+  document.querySelectorAll('#ImageGallery img').forEach((element) => {
+    element.addEventListener('click', () => openLightbox(element));
+}); } 
