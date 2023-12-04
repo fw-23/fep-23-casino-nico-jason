@@ -24,6 +24,7 @@ let playTimeStop;
 
 
 //Single page app things
+loadContent("Profile");
   async function loadContent(page) {
     const req = await fetch(`./${page}`);
     const content = await req.text();
@@ -44,6 +45,10 @@ function logIn() {
     if (age >= 18) {
         hideLogin();
     }
+}
+function logOut(){
+    location.reload();
+    localStorage.clear();
 }
 
 ColorTheme();
