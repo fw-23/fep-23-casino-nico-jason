@@ -15,8 +15,6 @@ choiceBtns.forEach(button => button.addEventListener("click" , () => {
 
     player = button.textContent
 
-    computer
-
     computerTurn();
     
     playerText.textContent = `Player ${player}` 
@@ -81,31 +79,45 @@ function checkWinner(){
 
 }
 
-let credits = localStorage.getItem("credits")
-let creditsInt = + credits
+function getCredits(){
+    let credits = localStorage.getItem("credits")
+    parseInt(credits)
+    return credits
+}
+function setCredits(credits){
+    localStorage.setItem("credits", credits)
+    document.getElementById("creditAmount").innerText = `${credits}`
+}
+
+function updateCredits(bet) {
+    const currentCredits = getCredits()
+    console.log(currentCredits + bet)
+    setCredits(currentCredits + bet)
+}
+
+
 function bet(){    
-    let bet = document.getElementById("betAmount")
+    let bet = parseInt(document.getElementById("betAmount").value)
     let winner = checkWinner()
-    console.log(winner)
-    UpdateCredits()
-    
+    //console.log(winner)
 
-    if(bet.value >  creditsInt){
+    if(bet > getCredits()){
         alert("insufficent credits")
-    }else if(bet.value < creditsInt){
+    }if(bet < 0 ){
+        alert("cant bet negativ")
+    }if(bet = "amount"){
+        alert("enter bet amount")
+    }else if(bet < getCredits()){
         if(winner == "win"){
-            creditsInt += +bet.value 
-            localStorage.setItem("credits", creditsInt)
+            updateCredits(bet)
         }if(winner == "lost"){
-            creditsInt -= +bet.value 
-            localStorage.setItem("credits", creditsInt)
+            updateCredits(bet)
         }else{
-            console.log("no change")
+            //console.log("no change")
         }
-    }
+    } 
+}
 
-}
-UpdateCredits()
-function UpdateCredits(){
-    document.getElementById("creditAmount").innerHTML =  `${creditsInt}`
-}
+window.onload = function () {
+    setCredits(getCredits());
+};
