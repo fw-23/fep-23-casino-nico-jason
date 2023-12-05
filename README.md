@@ -30,3 +30,5 @@ README.md   # Den fil du läser just nu
 - Det är tillåtet att ändra på strukturens uppbyggnad,  men projektet bör vara uppbyggt logiskt och konsekvent. Fritt fram att t.ex. byta namn på kataloger.
 
 https://miro.com/app/board/uXjVNTjtULU=/
+
+https://people.arcada.fi/~janssnic/FEP/fep-23-casino-nico-jason/pages/
