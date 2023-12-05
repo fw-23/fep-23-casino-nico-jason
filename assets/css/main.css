@@ -49,7 +49,7 @@ body {
   }
   
   #MenuButton {
-    position:relative;
+    position:fixed;
     left: 18px;
     background-color:#818181;
     color: white;
@@ -79,7 +79,7 @@ body {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  right: 10px;
+  right: 20px;
   top: 10px;
   border: #111 solid;
   margin: 0%;
@@ -144,7 +144,12 @@ body {
 #loginbutton:active {
   transform: translateY(0); 
 }
-
+/* MONKE*/
+  #Monke {
+    position: fixed;
+    right: 10px;
+    top: 230px;
+  }
   /* Different Containers */
   .rowCont {
     display: flex;
@@ -224,5 +229,29 @@ body {
     font-size: x-large;
     border: #000000 solid;
     margin: 5px;
-    background-color: yellow;
+    background-color: rgba(53, 18, 212, 0.566);
+    width: 160px;
+    text-align: center;
+  }
+  .rowCont a:hover{ 
+    background-color: green;
+    transition: all 0.5s ease-in-out;
+  }
+  #spel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 888px;
+    width: 855px;
+    overflow: hidden;
+    }
+
+  
+  #GamesText {
+    margin: 0px;
+    padding: 0px;
   }

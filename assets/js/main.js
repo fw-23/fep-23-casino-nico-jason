@@ -20,7 +20,28 @@ let aged = +age
 let playtime;
 let playTimeStop;
 
+let CasinoClosed = false;
 
+CasinoCloser();
+function CasinoCloser(){
+    if(CasinoClosed == true){
+    console.log('casinot är stängt');
+    DisplayClosedScreen();
+}
+    if(CasinoClosed == false){
+        HideClosedScreen()
+    }
+    setTimeout(CasinoCloser, 1000);
+};
+
+function DisplayClosedScreen(){
+    const ClosedSection = document.getElementById(`CasinoClosed`);
+    ClosedSection.style.display = "flex";
+};
+function HideClosedScreen(){
+    const ClosedSection = document.getElementById(`CasinoClosed`);
+    ClosedSection.style.display = "none";
+};
 
 
 //Single page app things
