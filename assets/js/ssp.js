@@ -10,19 +10,20 @@ const choiceBtns = document.querySelectorAll(".choiceBtn")
 let player;
 let computer;
 let result;
-
+let sspCredits;
+let winner;
+let betAmount;
 choiceBtns.forEach(button => button.addEventListener("click" , () => {
 
     player = button.textContent
 
     computerTurn();
-    
+    winner = checkWinner();
+    bet();
     playerText.textContent = `Player ${player}` 
-    computerText.textContent = `Opponent ${computer}` 
-    let winner = checkWinner();
+    computerText.textContent = `Opponent ${computer}`
     resultText.textContent = `Result ${winner}`;
-   
-    
+    balanceUpdate();
 }))
 
 function computerTurn (){
@@ -76,48 +77,47 @@ function checkWinner(){
         
         return("lost")
     }
+    
+}
+// Betting---------------------------------
+window.onload = function() {
+    getCreditsFromStorage();
+    balanceUpdate();
+};
+window.onbeforeunload = function(){
+    setCreditsToStorage();
+}
+//gets the credtis from localstorage
+function getCreditsFromStorage(){
+    sspCredits = parseInt(localStorage.getItem("credits"))
 
 }
-
-function getCredits(){
-    let credits = localStorage.getItem("credits")
-    parseInt(credits)
-    return credits
+//Saves the credits to localstorage
+function setCreditsToStorage(){
+    localStorage.setItem("credits", sspCredits);
 }
-function setCredits(credits){
-    localStorage.setItem("credits", credits)
-    document.getElementById("creditAmount").innerText = `${credits}`
+// Updates and displays the credit balance
+function balanceUpdate() {
+    document.getElementById("creditDisplay").innerText = `${sspCredits}`
+    setTimeout(balanceUpdate, 100);
 }
-
-function updateCredits(bet) {
-    const currentCredits = getCredits()
-    console.log(currentCredits + bet)
-    setCredits(currentCredits + bet)
-}
-
 
 function bet(){    
-    let bet = parseInt(document.getElementById("betAmount").value)
-    let winner = checkWinner()
-    //console.log(winner)
-
-    if(bet > getCredits()){
+    betAmount = parseInt(document.getElementById("betAmount").value)
+    
+    if(betAmount > sspCredits){
         alert("insufficent credits")
-    }if(bet < 0 ){
+    }if(betAmount < 0 ){
         alert("cant bet negativ")
-    }if(bet == "amount"){
+    }if(betAmount == ""){
         alert("enter bet amount")
-    }else if(bet < getCredits()){
-        if(winner == "win"){
-            updateCredits(bet)
-        }if(winner == "lost"){
-            updateCredits(bet)
-        }else{
-            //console.log("no change")
+    }else if(betAmount <= sspCredits){
+        if (winner == "win"){
+            sspCredits = sspCredits + betAmount;
+    }
+        if(winner == "lost"){
+            sspCredits = sspCredits - betAmount;
         }
-    } 
+        setCreditsToStorage();
+    }
 }
-
-window.onload = function () {
-    setCredits(getCredits());
-};
