@@ -52,6 +52,7 @@ function startGame() {
             card.id = r.toString() + "-" + c.toString()
             card.src = "../../assets/img/memorycrads/" + cardImg + ".jpg"
             card.classList.add("card")
+            card.draggable = false
             card.addEventListener('click', flipCard);
             document.getElementById("board").append(card)
         }

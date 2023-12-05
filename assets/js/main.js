@@ -74,6 +74,10 @@ function logOut(){
 
 ColorTheme();
 
+
+//profileValue() PLACES THIS AT RIGHTT POSTIOTIOSN PLS 
+
+
 //date and time
 function InfoDisplay() {
     //ny "Date" object
@@ -87,12 +91,17 @@ function InfoDisplay() {
 
     //current time omformat och usrename, visar det i html
     let currentTime = `${d}.${mont + 1} Time:${h}:${m}:${s}`;
+    let CheckTime = `${h}:${m}:${s}`
     document.getElementById("dateTime").innerText = currentTime;
     document.getElementById("dateTime").textContent = currentTime;
     document.getElementById("UserDisplay").innerText = localStorage.getItem("username");
 
     //refreshar varje sekund
     setTimeout(InfoDisplay, 1000);
+    if (CheckTime == PlayTimeStop){
+        console.log("closed")
+        CasinoClosed = true
+    }
 }
 
 
@@ -136,7 +145,7 @@ function createUsername(first, last){
     username = fullname.charAt(0).toUpperCase() + fullname.charAt(1).toUpperCase() + fullname.slice(2);
     return username;
 }
-
+let PlayTimeStop
 //timer function för playtimestop
 function timer() {
     let date = new Date();
@@ -144,7 +153,8 @@ function timer() {
     let m = date.getMinutes();
     let s = date.getSeconds();
 
-    aTime = + playtime
+
+   let aTime  = parseInt(playtime)
     m = m + aTime
 
     for (let i = 0; i = 1; i++)
@@ -157,19 +167,40 @@ function timer() {
             break;
         }
 
-    let playTimeStop = `${h}:${m}:${s}`
-    document.getElementById("TimerDisplay").innerText = "casino closes: " + playTimeStop;
-    localStorage.setItem(`playTimeStop`, playTimeStop)
+    PlayTimeStop = `${h}:${m}:${s}`
+    document.getElementById("TimerDisplay").innerText = "casino closes: " + PlayTimeStop;
+    localStorage.setItem(`playTimeStop`, PlayTimeStop)
+
+    
 }
+//set value in the profiles tab
+function profileValue(){
+    const usernameString = `username ${namn} ${surname}`
+    const crediters = localStorage.getItem("credits", credits)
+    console.log(usernameString)
+    document.getElementById("usernameProfile").innerText = usernameString
+    document.getElementById("creditBalanceProfile").innerText = crediters
+}
+
+
+
+StealYourInfo()
+
 //Info user information display 
 function StealYourInfo() {
-    console.log(navigator.platform) //platform
-    console.log(navigator.userAgent) //browser 
-    console.log(navigator.language) //språk
-    console.log(`height ${window.screen.availHeight}px, width${window.screen.availWidth}px`)
+    const platform = navigator.platform
+    const browser = navigator.userAgent
+    const language = navigator.language
+    const reso = `height ${window.screen.availHeight}px, width${window.screen.availWidth}px`
+   
+    console.log(platform) //platform
+    console.log(browser) //browser 
+    console.log(language) //språk
+    console.log(reso)
     getlocation()
     timesplayed()
 }
+
 
 function getlocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -177,8 +208,10 @@ function getlocation() {
         let latitude = position.coords.latitude
         let longitude = position.coords.longitude
 
+        
         console.log(`latitude ${latitude}`)
         console.log(`longitude ${longitude}`)
+        
     },
         function (error) {
             console.log('Error Message = ', error.message)
@@ -192,12 +225,12 @@ function timesplayed() {
     let i = j
     if (localStorage.timesplayed >= 1) {
         i++
-        localStorage.setItem("timesplayed", i)
-        console.log("times played" + localStorage.timesplayed)
+        localStorage.setItem("timesplayed ", i)
+        console.log("times played " + localStorage.timesplayed)
     }
     else {
         console.log("username is new")
-        localStorage.setItem("timesplayed", 1)
+        localStorage.setItem("timesplayed ", 1)
     }
 
 }
