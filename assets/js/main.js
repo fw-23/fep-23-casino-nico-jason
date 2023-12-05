@@ -10,7 +10,7 @@ function closeNav() {
     document.getElementById("menu").style.width = "0";
 }
 //--------------------------
-
+// variabler
 let förnamn;
 let surname;
 let username;
@@ -19,32 +19,48 @@ let age;
 let aged = +age
 let playtime;
 let playTimeStop;
-
 let CasinoClosed = false;
-
+let day;
+//Körs genast
 CasinoCloser();
+DayTester();
+
+//stänger casinot
 function CasinoCloser(){
     if(CasinoClosed == true){
     console.log('casinot är stängt');
     DisplayClosedScreen();
-}
-    if(CasinoClosed == false){
-        HideClosedScreen()
+    }if(CasinoClosed == false){
+        HideClosedScreen();
     }
     setTimeout(CasinoCloser, 1000);
 };
-
+//kollar vilken dag
+function DayTester(){
+    //ny "Date" object
+    let date = new Date();
+    //Får ut specifik day ur Date
+    day = date.getDay();
+    if(day == 6 || day == 0){
+        CasinoClosed = true;
+    }else{
+        CasinoClosed = false;
+    }
+    setTimeout(DayTester, 1000);
+}
+//visar casino stängt sidan
 function DisplayClosedScreen(){
     const ClosedSection = document.getElementById(`CasinoClosed`);
     ClosedSection.style.display = "flex";
 };
+//gömmer casino stängt sidan
 function HideClosedScreen(){
     const ClosedSection = document.getElementById(`CasinoClosed`);
     ClosedSection.style.display = "none";
 };
 
 
-//Single page app things
+//Single page app funktion
 loadContent("Profile");
   async function loadContent(page) {
     const req = await fetch(`./${page}`);
@@ -56,7 +72,7 @@ loadContent("Profile");
     if(evt.target.localName != `span` ) return;
     loadContent(evt.target.dataset.page);
 }) 
-//Login!
+//Login! - körs när man trycker på login-knappen
 function logIn() {
     getvalues();
     timer()
@@ -66,18 +82,13 @@ function logIn() {
     if (age >= 18) {
         hideLogin();
     }
+    ColorTheme();
+    profileValue();
 }
+// körs när man trycker på logout knappen
 function logOut(){
     location.reload();
-    localStorage.clear();
 }
-
-ColorTheme();
-
-
-//profileValue() PLACES THIS AT RIGHTT POSTIOTIOSN PLS 
-
-
 //date and time
 function InfoDisplay() {
     //ny "Date" object
@@ -92,23 +103,21 @@ function InfoDisplay() {
     //current time omformat och usrename, visar det i html
     let currentTime = `${d}.${mont + 1} Time:${h}:${m}:${s}`;
     let CheckTime = `${h}:${m}:${s}`
+    
     document.getElementById("dateTime").innerText = currentTime;
     document.getElementById("dateTime").textContent = currentTime;
     document.getElementById("UserDisplay").innerText = localStorage.getItem("username");
 
     //refreshar varje sekund
     setTimeout(InfoDisplay, 1000);
+    //kollar när den valda tiden är nådd och loggar ut
     if (CheckTime == PlayTimeStop){
         console.log("closed")
-        CasinoClosed = true
+        CasinoClosed = true;
+        logOut();
     }
 }
-
-
-
 //-----------------------------
-
-
 //Local storage för userdata
 function localStorageFunction(aged) {
     if (aged < 18) {
@@ -129,7 +138,6 @@ function localStorageFunction(aged) {
     console.log(`Username: ${username}, Credits: ${credits}, Age: ${age}`);
     console.log(localStorage);
 }
-
 //getvalues för all input data + username generator
 function getvalues() {
     namn = document.getElementById("namn").value;
@@ -162,12 +170,16 @@ function timer() {
             h++;
             m = m - 60;
             i--;
+            
         }
         else {
             break;
         }
-
+        if(h > 24){
+            h = h - 24;
+        }
     PlayTimeStop = `${h}:${m}:${s}`
+
     document.getElementById("TimerDisplay").innerText = "casino closes: " + PlayTimeStop;
     localStorage.setItem(`playTimeStop`, PlayTimeStop)
 
@@ -175,17 +187,10 @@ function timer() {
 }
 //set value in the profiles tab
 function profileValue(){
-    const usernameString = `username ${namn} ${surname}`
-    const crediters = localStorage.getItem("credits", credits)
-    console.log(usernameString)
-    document.getElementById("usernameProfile").innerText = usernameString
-    document.getElementById("creditBalanceProfile").innerText = crediters
+    document.getElementById("usernameProfile").innerText = `Username: ${username}`
+    document.getElementById("creditBalanceProfile").innerText = `Credit balance: ${localStorage.getItem("credits", credits)}`
+    
 }
-
-
-
-StealYourInfo()
-
 //Info user information display 
 function StealYourInfo() {
     const platform = navigator.platform
@@ -193,62 +198,66 @@ function StealYourInfo() {
     const language = navigator.language
     const reso = `height ${window.screen.availHeight}px, width${window.screen.availWidth}px`
    
-    console.log(platform) //platform
-    console.log(browser) //browser 
-    console.log(language) //språk
-    console.log(reso)
-    getlocation()
-    timesplayed()
+    console.log(platform); //platform
+    console.log(browser); //browser 
+    console.log(language); //språk
+    console.log(reso);   //resolution
+    getlocation();
+    timesplayed();
 }
 
-
+//geolocation
 function getlocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
 
-        let latitude = position.coords.latitude
-        let longitude = position.coords.longitude
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
 
         
-        console.log(`latitude ${latitude}`)
-        console.log(`longitude ${longitude}`)
+        console.log(`latitude ${latitude}`);
+        console.log(`longitude ${longitude}`);
         
     },
         function (error) {
-            console.log('Error Message = ', error.message)
+            console.log('Error Message = ', error.message);
         }
     )
 }
-
+//trackar times playd
 function timesplayed() {
 
-    let j = +localStorage.timesplayed
-    let i = j
+    let j = +localStorage.timesplayed;
+    let i = j;
     if (localStorage.timesplayed >= 1) {
-        i++
-        localStorage.setItem("timesplayed ", i)
-        console.log("times played " + localStorage.timesplayed)
+        i++;
+        localStorage.setItem("timesplayed ", i);
+        console.log("times played " + localStorage.timesplayed);
     }
     else {
-        console.log("username is new")
-        localStorage.setItem("timesplayed ", 1)
+        console.log("username is new");
+        localStorage.setItem("timesplayed ", 1);
     }
 
 }
 
+//gömmer loginscreenen
 function hideLogin() {
 
     const loginSection = document.getElementById("welcome")
     loginSection.style.display = "none"
 }
+//visar loginscreenen
 function displayLogin() {
     const loginSection = document.getElementById("welcome")
     loginSection.style.display = "flex"
 }
+//Sparar temat
 function saveTheme(){
     const theme = document.getElementById("ColorTheme");
     localStorage.setItem("colortheme", theme.value);
     ColorTheme();
 }
+//ändrar färgtema
 function ColorTheme(){
 
     let colorvalue
@@ -277,18 +286,18 @@ function ColorTheme(){
     }
    
 
-    console.log(colorvalue + textvalue)
+    //console.log(colorvalue + textvalue)
 
     setColor(colorvalue, textvalue);
 }
 
 
-
+// färgtema från värden
 function setColor(colorvalue, textvalue) {
     document.body.style.background = colorvalue;
     document.body.style.color = textvalue;
 }
-
+//random kolortema genereras
 colorGambler()
 function colorGambler(){
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -305,7 +314,10 @@ function openLightbox(elem) {
         document.querySelector(`#lightbox`).style.display = "none";
     });
 }
+//Aktiverar eventlisteners när single page app förstörde dem
 function ActivateEvent() {
   document.querySelectorAll('#ImageGallery img').forEach((element) => {
     element.addEventListener('click', () => openLightbox(element));
-}); } 
+}); 
+    profileValue();
+} 

@@ -6,6 +6,7 @@ body{
     background-color: rgba(64, 67, 157, 0.595)
 }
 
+/* CSS för memorykorten, gameboarden */
 #board{
     height: 798px;
     width: 855px;
@@ -23,10 +24,10 @@ body{
     width: 120px;
     margin: 5px;    
     border-radius: 10px;
-    transition: background-color 0.3s, transform 0.3s, border-color 0.3s; /* Smooth transitions for background-color, transform, and border-color */
-    transition: transform 0.6s; /* Smooth transition for transform property */
+    transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+    transition: transform 0.6s;
 }
 .card:hover{
     border-color: #fff;
-    transform: scale(1.1); /* Upscale effect */
+    transform: scale(1.1);
 }

@@ -1,4 +1,6 @@
+// error variabel
 let errors = 0
+//card listan
 const cardList = [
     "january",
     "february",
@@ -13,7 +15,7 @@ const cardList = [
     "november",
     "december"
 ]
-
+//variabler för kort och array för boarden, variabler för vilket kort är selected
 let cardSet
 let board = []
 const rows = 6;
@@ -22,11 +24,12 @@ const cols = 4;
 let card1selected;
 let card2selected;
 
+//onload funktion för spelen, kör kortblandare och startGame
 window.onload = function () {
     shuffleCards()
     startGame()
 }
-
+//kortblandare
 function shuffleCards() {
     cardSet = cardList.concat(cardList)
     console.log(cardSet)
@@ -40,7 +43,7 @@ function shuffleCards() {
     }
     console.log(cardSet)
 }
-
+//Gamelogic
 function startGame() {
     for (let r = 0; r < rows; r++) {
         let row = [];
@@ -61,7 +64,7 @@ function startGame() {
     console.log(board)
     setTimeout(hideCards, 1000)
 }
-
+//Gömmer korten igen igall fel val
 function hideCards() {
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
@@ -70,7 +73,7 @@ function hideCards() {
         }
     }
 }
-
+//"vänder" på korten
 function flipCard(){
     if(this.src.includes("back")){
         if(!card1selected){
@@ -93,7 +96,7 @@ function flipCard(){
         }
     }
 }
-
+//uppdaters 1 gång per sekund, ger player errors när val är fel och resettar cardselect
 function update(){
     if(card1selected.src != card2selected.src) {
         card1selected.src = "../../assets/img/memorycrads/back.jpg"

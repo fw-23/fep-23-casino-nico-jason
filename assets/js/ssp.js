@@ -89,7 +89,7 @@ window.onbeforeunload = function(){
 }
 //gets the credtis from localstorage
 function getCreditsFromStorage(){
-    sspCredits = parseInt(localStorage.getItem("credits"))
+    sspCredits = parseFloat(localStorage.getItem("credits"))
 
 }
 //Saves the credits to localstorage
@@ -101,9 +101,9 @@ function balanceUpdate() {
     document.getElementById("creditDisplay").innerText = `${sspCredits}`
     setTimeout(balanceUpdate, 100);
 }
-
+//bet funktionen som adderar och subtraherar från credits
 function bet(){    
-    betAmount = parseInt(document.getElementById("betAmount").value)
+    betAmount = parseFloat(document.getElementById("betAmount").value)
     
     if(betAmount > sspCredits){
         alert("insufficent credits")

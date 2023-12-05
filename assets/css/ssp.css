@@ -1,22 +1,12 @@
 /* Om en undersida behöver egen CSS (som endast gäller den) kan du ha den i en skild fil */
 body {
-    background-color: teal; /* Bara för att testa, ÄNDRA eller ta bort! */
+    background-color: teal;
 }
+/* CSS för SSP spelplanen*/
 #gamediv{
-
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-#text{
-
-    
-    
-
-}
-#buttons{
-
-
 }
